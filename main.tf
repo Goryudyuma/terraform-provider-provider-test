@@ -1,0 +1,1 @@
+resource "terraform-provider-provider-test" "" {}
