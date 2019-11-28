@@ -9,5 +9,10 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"provider-test": resourceServer(),
 		},
+		ConfigureFunc: providerConfigure,
 	}
+}
+
+func providerConfigure(d *schema.ResourceData) (interface{}, error) {
+	return "a", nil
 }

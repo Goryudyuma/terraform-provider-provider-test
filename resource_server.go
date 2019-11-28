@@ -16,11 +16,18 @@ func resourceServer() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
+			"string": &schema.Schema{
+				Type:     schema.TypeString,
+				Computed: true,
+			},
 		},
 	}
 }
 
 func resourceServerCreate(d *schema.ResourceData, m interface{}) error {
+	if err := d.Set("string", m); err != nil {
+		return err
+	}
 	address := d.Get("address").(string)
 	d.SetId(address)
 	return resourceServerRead(d, m)
